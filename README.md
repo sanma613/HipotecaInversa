@@ -11,8 +11,7 @@ Las entradas son los datos proporcionados por el usuario para el cálculo de la 
 6.	Porcentaje del precio real: Es el porcentaje del valor total de la vivienda que el banco está dispuesto a prestar.
 7.	Valor de la hipoteca: Es la cantidad total de dinero que el propietario recibirá a lo largo de la hipoteca inversa.
 8.	Ingreso mensual: Es el monto que el propietario recibirá cada mes mientras dure la hipoteca inversa.
-9.	Tasa de interés anual: Es el porcentaje que el banco cobra anualmente sobre el saldo de la hipoteca.
-10.	Tasa de interés mensual: Es la tasa de interés aplicada mensualmente sobre la hipoteca inversa.
+9.	Tasa de interés mensual: Es la tasa de interés aplicada mensualmente sobre la hipoteca inversa.
 El cálculo de la hipoteca inversa sigue los siguientes pasos:
 1.	Ingreso de datos: Se registran los valores de la Edad del propietario, expectativa de vida, Años renta, Precio de la vivienda, Porcentaje del precio real, Tasa de interés anual, Determinación del monto elegible:
 o	Se aplican regulaciones y límites según la ubicación.
