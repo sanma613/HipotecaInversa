@@ -1,3 +1,5 @@
+Juan Pablo Tafur - Sebastian Valencia 
+
 README - Calculadora de Hipoteca Inversa
 Descripción
 La Calculadora de Hipoteca Inversa es una herramienta diseñada para estimar el monto que un propietario puede recibir a través de una hipoteca inversa, basada en el valor de su vivienda, edad y otros factores financieros.
