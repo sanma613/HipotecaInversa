@@ -42,3 +42,24 @@ El resultado del cálculo incluye:
 •	Ingreso Mensual
 •	Deuda Total
 •	Errores de ingreso de datos
+
+
+LA ARQUITECTURA DEL CODIGO ESTA ESTRUCTURADA DE LA SIGUIENTE MANERA:
+
+Dentro de la carpeta .vscode, se encuentra un archivo llamado settings.jason con un fragmento de código es una configuración para Visual Studio Code (VS Code), específicamente para el entorno de pruebas en Python.
+
+Dentro de la carpeta src se establecieron otras dos carpetas. Primero se encuentra la carpeta model, la cual contiene el archivo hipoteca_inversa.py que lleva toda la logica de los calculos necesarios para las salida de la Hipoteca Inversa. En la carpeta view esta el archivo Hipoteca_Inversa_consola.py, que contiene la logica de la consola con la que va a interactuar el usuario
+
+Por ultimo tenemos la carpeta test, que contiene el archivo test_hipoteca_nversa.py que lleva la logica e implementacion de cada test de los casos normales, extraordinarios y de error.
+
+Como instancia extra se tiene un archivo .gitignore para que en las carpetas no se añadan archivos no deseados a la hora de ejecutar el codigo
+
+
+INSTRUCCIONES PARA EJECUTAR LAS PRUEBAS UNITARIAS 
+
+Para ejecutar las pruebas unitarias en Visual Studio Code con unittest, primero abre el proyecto en VS Code, asegúrate de que el plugin de Python esté instalado y que el entorno virtual correcto esté seleccionado. Luego, en la barra de comandos (Ctrl + Shift + P), busca y selecciona "Python: Configure Tests", elige unittest como framework de pruebas, establece el directorio tests/ como ubicación de las pruebas y usa el patrón *test*.py. Finalmente, ejecuta las pruebas seleccionando "Python: Run All Tests" en la misma barra de comandos o utilizando la pestaña Testing en la barra lateral de VS Code.
+
+
+INSTRUCCIONES PARA EJECUTAR LA INTERFAZ DE CONSOLA
+
+Para ejecutar la interfaz de consola en Visual Studio Code, abre el proyecto en VS Code y asegúrate de tener Python instalado y el entorno virtual configurado correctamente. Luego, abre el archivo de la consola en el editor y ejecuta el script presionando F5 o abriendo el terminal (Ctrl + ñ en Windows) y ejecutando python Hipoteca_Inversa_consola.py. Ingresa los datos cuando se te soliciten y el programa calculará el ingreso mensual esperado y
