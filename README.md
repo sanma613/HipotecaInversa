@@ -1,8 +1,13 @@
-Juan Pablo Tafur - Sebastian Valencia 
+Juan Pablo Tafur – Sebastián Valencia 
+
 
 README - Calculadora de Hipoteca Inversa
-Descripción
-La Calculadora de Hipoteca Inversa es una herramienta diseñada para estimar el monto que un propietario puede recibir a través de una hipoteca inversa, basada en el valor de su vivienda, edad y otros factores financieros.
+
+¿Qué es y para qué es?
+
+La Calculadora de Hipoteca Inversa es una herramienta diseñada para estimar el monto que un propietario puede recibir a través de una hipoteca inversa. Utiliza datos como la edad del propietario, el valor de su vivienda y otros factores financieros para calcular los pagos mensuales y la deuda acumulada.
+
+
 Entradas
 Las entradas son los datos proporcionados por el usuario para el cálculo de la hipoteca inversa. Estas incluyen:
 
@@ -24,7 +29,11 @@ Las entradas son los datos proporcionados por el usuario para el cálculo de la 
 
 9.	Tasa de interés mensual: Es la tasa de interés aplicada mensualmente sobre la hipoteca inversa.
 
+
+
+
 El cálculo de la hipoteca inversa sigue los siguientes pasos:
+
 1.	Ingreso de datos: Se registran los valores de la Edad del propietario, expectativa de vida, Años renta, Precio de la vivienda, Porcentaje del precio real, Tasa de interés anual, Determinación del monto elegible:
 
 o	Se aplican regulaciones y límites según la ubicación.
@@ -35,7 +44,8 @@ o	Se descuenta cualquier saldo de hipoteca previa.
 
 3.	Generación del resultado: Se obtiene el monto disponible y las opciones de pago.
 
-Salidas
+
+Salidas: 
 
 El resultado del cálculo incluye:
 
@@ -43,23 +53,50 @@ El resultado del cálculo incluye:
 •	Deuda Total
 •	Errores de ingreso de datos
 
+¿Cómo lo hago funcionar?
 
-LA ARQUITECTURA DEL CODIGO ESTA ESTRUCTURADA DE LA SIGUIENTE MANERA:
+Prerrequisitos
+Antes de ejecutar el proyecto, asegúrese de contar con:
+•	Python instalado (versión 3.8 o superior).
+•	Un entorno virtual configurado (opcional, pero recomendado).
+•	Acceso a Git para clonar el repositorio.
 
-Dentro de la carpeta .vscode, se encuentra un archivo llamado settings.jason con un fragmento de código es una configuración para Visual Studio Code (VS Code), específicamente para el entorno de pruebas en Python.
-
-Dentro de la carpeta src se establecieron otras dos carpetas. Primero se encuentra la carpeta model, la cual contiene el archivo hipoteca_inversa.py que lleva toda la logica de los calculos necesarios para las salida de la Hipoteca Inversa. En la carpeta view esta el archivo Hipoteca_Inversa_consola.py, que contiene la logica de la consola con la que va a interactuar el usuario
-
-Por ultimo tenemos la carpeta test, que contiene el archivo test_hipoteca_nversa.py que lleva la logica e implementacion de cada test de los casos normales, extraordinarios y de error.
-
-Como instancia extra se tiene un archivo .gitignore para que en las carpetas no se añadan archivos no deseados a la hora de ejecutar el codigo
-
-
-INSTRUCCIONES PARA EJECUTAR LAS PRUEBAS UNITARIAS 
-
-Para ejecutar las pruebas unitarias en Visual Studio Code con unittest, primero abre el proyecto en VS Code, asegúrate de que el plugin de Python esté instalado y que el entorno virtual correcto esté seleccionado. Luego, en la barra de comandos (Ctrl + Shift + P), busca y selecciona "Python: Configure Tests", elige unittest como framework de pruebas, establece el directorio tests/ como ubicación de las pruebas y usa el patrón *test*.py. Finalmente, ejecuta las pruebas seleccionando "Python: Run All Tests" en la misma barra de comandos o utilizando la pestaña Testing en la barra lateral de VS Code.
+Instalación y configuración
+1.	Abra la terminal o el símbolo del sistema (cmd en Windows).
+2.	Cambie al directorio donde desea clonar el proyecto:
+cd ruta/deseada
+3.	Clone el repositorio con el siguiente comando:
+git clone https://github.com/JuanTafur10/HipotecaInversa.git
+4.	Ingrese al directorio del proyecto:
+cd HipotecaInversa
+5.	Instale las dependencias necesarias:
+pip install -r requirements.txt
 
 
-INSTRUCCIONES PARA EJECUTAR LA INTERFAZ DE CONSOLA
+Ejecución
+Para ejecutar la interfaz de consola:
+1.	Desde la carpeta raíz del proyecto, cambie a la carpeta src/view:
+cd src/view
+2.	Ejecute el siguiente comando para iniciar la aplicación:
+python Hipoteca_Inversa_consola.py
 
-Para ejecutar la interfaz de consola en Visual Studio Code, abre el proyecto en VS Code y asegúrate de tener Python instalado y el entorno virtual configurado correctamente. Luego, abre el archivo de la consola en el editor y ejecuta el script presionando F5 o abriendo el terminal (Ctrl + ñ en Windows) y ejecutando python Hipoteca_Inversa_consola.py. Ingresa los datos cuando se te soliciten y el programa calculará el ingreso mensual esperado y
+
+Para ejecutar las pruebas unitarias:
+1.	Regrese a la carpeta raíz del proyecto:
+cd ../../
+2.	Ejecute las pruebas unitarias:
+python -m unittest discover -s tests
+3.	Si las pruebas no se ejecutan correctamente, asegúrese de que la ruta de búsqueda de módulos incluya src. Para ello, agregue lo siguiente al inicio del archivo de pruebas:
+import sys
+sys.path.append("src")
+
+¿Cómo está hecho?
+El proyecto sigue una arquitectura modular con separación de responsabilidades. Se organiza en las siguientes carpetas:
+•	src/: Contiene el código fuente de la aplicación.
+o	model/: Contiene la lógica del cálculo de la hipoteca inversa (hipoteca_inversa.py).
+o	view/: Contiene la interfaz de consola con la que interactúa el usuario (Hipoteca_Inversa_consola.py).
+•	tests/: Contiene las pruebas unitarias del proyecto.
+o	test_hipoteca_inversa.py: Implementa casos de prueba para verificar el funcionamiento del código.
+•	.vscode/: Contiene configuraciones de VS Code para el entorno de pruebas.
+•	.gitignore: Define archivos y carpetas que no deben incluirse en el repositorio.
+Cada carpeta de código fuente contiene un archivo __init__.py para que Python la reconozca como un módulo importable.
