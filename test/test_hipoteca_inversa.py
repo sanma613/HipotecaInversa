@@ -1,8 +1,6 @@
 import unittest
-
 import sys
-sys.path.append("src/model")
-
+sys.path.append("src")
 from model import hipoteca_inversa
 
 class PruebasHipotecaInversa(unittest.TestCase):

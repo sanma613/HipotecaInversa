@@ -1,5 +1,5 @@
 import sys
-sys.path.append("src/model")
+sys.path.append("src")
 from model import hipoteca_inversa
 
 #Se añade la consola, la cual pide los datos y calcula la deuda esperada y el ingreso mensual esperado
