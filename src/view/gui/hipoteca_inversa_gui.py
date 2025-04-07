@@ -76,7 +76,7 @@ class hipotecaApp(App):
         ]
         if not all(campos):
             raise ValueError("Todos los campos deben estar diligenciados.")
-
+    
     def mostrar_error(self, mensaje):
         popup = Popup(
             title="Error",
