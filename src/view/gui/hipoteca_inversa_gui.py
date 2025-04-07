@@ -47,8 +47,47 @@ class hipotecaApp(App):
         
         return contenedor
     
-hipotecaApp().run()
+    def calcular_hipoteca(self, instance):
+        try:
+            self.validar_entradas()
+            hipoteca = Hipoteca(
+                edad=int(self.edad.text),
+                precio_de_la_vivienda=float(self.precio_vivienda.text),
+                porcentaje_precio_real=float(self.porcentaje_precio.text),
+                total_cuotas=int(self.cuotas.text),
+                tasa_de_interes_mensual=float(self.tasa_interes.text),
+            )
+            monto_mensual = hipoteca.calcular()
+            self.resultado.text = f"Monto mensual estimado:\n${round(monto_mensual, 2)}"
+        except ValueError:
+            self.resultado.text = ""
+            self.mostrar_error("Por favor, ingresa valores numéricos válidos.")
+        except Exception as err:
+            self.resultado.text = ""
+            self.mostrar_error(f"Ocurrió un error: {str(err)}")
 
+    def validar_entradas(self):
+        campos = [
+            self.edad.text,
+            self.precio_vivienda.text,
+            self.porcentaje_precio.text,
+            self.cuotas.text,
+            self.tasa_interes.text
+        ]
+        if not all(campos):
+            raise ValueError("Todos los campos deben estar diligenciados.")
+
+    def mostrar_error(self, mensaje):
+        popup = Popup(
+            title="Error",
+            content=Label(text=mensaje),
+            size_hint=(None, None),
+            size=(400, 200)
+        )
+        popup.open()
+
+if __name__ == "__main__":
+    hipotecaApp().run()
 
         
     
