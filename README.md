@@ -35,6 +35,7 @@ HipotecaInversa/
 
 
 Pasos para ejecutar la interfaz gráfica (GUI)
+
 1.Ubícate en la raíz del proyecto
 
 Abre una terminal o consola y navega hasta la carpeta principal del proyecto. Por ejemplo:
