@@ -50,7 +50,8 @@ python src/view/gui/hipoteca_inversa_gui.py
 
 Esto abrirá la ventana de la aplicación con los campos de entrada y el botón para calcular.
 
-Qué debe pasar al ejecutarlo?
+¿Qué debe pasar al ejecutarlo?
+
 Se abrirá una ventana con los siguientes campos para ingresar datos:
 
 Edad del usuario
