@@ -12,7 +12,7 @@ import sys
 sys.path.append("src")
 
 # Logica de la tarjeta de credito
-from model.hipoteca_inversa import Hipoteca
+from model.hipoteca_inversa import Hipoteca, ErrorValoresIngresadosPorcentajes, ErrorCuotas, ErrorEdadIncorrecta, ErrorFaltaTasaInteres, ErrorFaltaMontoInicial
 
 class hipotecaApp(App):
     def build(self):
@@ -95,8 +95,31 @@ class hipotecaApp(App):
         except Exception as err:
             self.mostrar_error(err)
             
+    def mostrar_error(self, err):
+        layout = GridLayout(cols=1, padding=10)
+        layout.add_widget(Label(text=str(err)))
+        btn_cerrar = Button(text="Cerrar", size_hint_y=None, height=40)
+        layout.add_widget(btn_cerrar)
+
+        popup = Popup(title="Error", content=layout, size_hint=(0.7, 0.4))
+        btn_cerrar.bind(on_press=popup.dismiss)
+        popup.open()
+            
     def validar_entradas(self):
-       pass
+        if not self.edad.text.strip().isnumeric():
+            raise ErrorEdadIncorrecta("Falta la edad. Ingrese una edad válida")
+
+        if not self.precio_vivienda.text.strip().replace('.', '', 1).isdigit():
+            raise ErrorFaltaMontoInicial("Falta el precio de la vivienda. Ingrese un valor numérico mayor a cero")
+
+        if not self.porcentaje_precio.text.strip().replace('.', '', 1).isdigit():
+            raise ErrorValoresIngresadosPorcentajes("Falta el porcentaje del precio real. Ingrese un número mayor a cero")
+
+        if not self.cuotas.text.strip().isnumeric():
+            raise ErrorCuotas("Falta el número de cuotas. Ingrese un valor entero mayor a cero")
+
+        if not self.tasa_interes.text.strip().replace('.', '', 1).isdigit():
+            raise ErrorFaltaTasaInteres("Falta la tasa de interés. Ingrese un valor numérico mayor a cero")
 
 if __name__ == "__main__":
     hipotecaApp().run()

@@ -13,6 +13,16 @@ class ErrorCuotas(Exception):
 class ErrorEdadnegativa(Exception):
     def __init__(self, edad):
         super().__init__(f"La edad ingresada no puede ser negativa. La edad ingresada ({edad}) es incorrecta. Vuelvalo a intentar teniendo en cuenta que la edad no debe ser negativa")
+        
+class ErrorFaltaTasaInteres(Exception):
+    """Excepción para cuando falta la tasa de interés."""
+    def __init__(self, mensaje="Falta la tasa de interés. Ingrese una tasa válida."):
+        super().__init__(mensaje)
+
+class ErrorFaltaMontoInicial(Exception):
+    """Excepción para cuando falta el monto inicial."""
+    def __init__(self, mensaje="Falta el monto inicial. Ingrese un valor numérico mayor a cero."):
+        super().__init__(mensaje)
 
 class Hipoteca:
     def __init__(self, edad, precio_de_la_vivienda, porcentaje_precio_real, total_cuotas, tasa_de_interes_mensual):
