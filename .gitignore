@@ -1,2 +1,5 @@
 __pycache__
 .venv
+dist
+build
+hipoteca_inversa_gui.spec

@@ -9,7 +9,16 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.popup import Popup
 
 import sys
-sys.path.append("src")
+import os
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")  
+    return os.path.join(base_path, relative_path)
+
+sys.path.append(resource_path("src"))
 
 # Logica de la tarjeta de credito
 from model.hipoteca_inversa import Hipoteca, ErrorValoresIngresadosPorcentajes, ErrorCuotas, ErrorEdadIncorrecta, ErrorFaltaTasaInteres, ErrorFaltaMontoInicial
