@@ -1,14 +1,14 @@
 class Propiedad:
     def __init__(
         self,
-        id: int,
-        direccion: str,
-        valor: float,
+        id: int = None,
+        direccion: str = None,
+        valor: float = None,
         tipo: str = None,
         propietario_id: int = None,
         fecha_registro: str = None
     ):
-        if id is None or id < 0:
+        if id is not None and (not isinstance(id, int) or id <= 0):
             raise ValueError("El id debe ser un entero positivo.")
         if not direccion or not isinstance(direccion, str):
             raise ValueError("La dirección es obligatoria y debe ser una cadena de texto.")
@@ -25,6 +25,7 @@ class Propiedad:
         self.tipo = tipo
         self.propietario_id = propietario_id
         self.fecha_registro = fecha_registro
+
 
     def __repr__(self):
         return (

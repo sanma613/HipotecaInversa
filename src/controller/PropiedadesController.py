@@ -42,12 +42,12 @@ class PropiedadesController:
 
     @staticmethod
     def insertar(propiedad: Propiedad):
-        """Inserta una propiedad en la tabla"""
         cursor = PropiedadesController.obtener_cursor()
         cursor.execute("""
             INSERT INTO propiedades (
                 direccion, valor, tipo, propietario_id, fecha_registro
             ) VALUES (%s, %s, %s, %s, %s)
+            RETURNING id
         """, (
             propiedad.direccion,
             propiedad.valor,
@@ -55,6 +55,7 @@ class PropiedadesController:
             propiedad.propietario_id,
             propiedad.fecha_registro
         ))
+        propiedad.id = cursor.fetchone()[0]  
         cursor.connection.commit()
         cursor.close()
 

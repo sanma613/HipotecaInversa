@@ -40,17 +40,18 @@ class PagosController:
 
     @staticmethod
     def insertar(pago: Pago):
-        """Inserta un pago en la tabla"""
         cursor = PagosController.obtener_cursor()
         cursor.execute("""
             INSERT INTO pagos (
-            hipoteca_id, monto, fecha_pago
+                hipoteca_id, monto, fecha_pago
             ) VALUES (%s, %s, %s)
+            RETURNING id
         """, (
             pago.hipoteca_id,
             pago.monto,
             pago.fecha_pago
         ))
+        pago.id = cursor.fetchone()[0]
         cursor.connection.commit()
         cursor.close()
 

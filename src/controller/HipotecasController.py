@@ -30,7 +30,7 @@ class HipotecasController:
     def eliminar_tabla():
         """Elimina la tabla de hipotecas de la BD"""
         cursor = HipotecasController.obtener_cursor()
-        cursor.execute("DROP TABLE IF EXISTS hipotecas;")
+        cursor.execute("DROP TABLE IF EXISTS hipotecas CASCADE;")
         cursor.connection.commit()
         cursor.close()
 
