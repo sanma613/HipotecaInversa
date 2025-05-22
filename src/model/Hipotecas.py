@@ -1,3 +1,5 @@
+
+
 class Hipoteca:
     def __init__(self, id, cliente_id, propiedad_id, total_cuotas, tasa_interes_mensual, ingreso_mensual, deuda_total, fecha_inicio, estado):
 
@@ -33,3 +35,4 @@ class Hipoteca:
             f"tasa_interes_mensual={self.tasa_interes_mensual}, ingreso_mensual={self.ingreso_mensual}, "
             f"deuda_total={self.deuda_total}, fecha_inicio={self.fecha_inicio})"
         )
+    

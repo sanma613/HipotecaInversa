@@ -6,5 +6,6 @@ CREATE TABLE hipotecas (
     tasa_interes_mensual NUMERIC(5, 2) NOT NULL,
     ingreso_mensual NUMERIC(15, 2),
     deuda_total NUMERIC(15, 2),
-    fecha_inicio TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    fecha_inicio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    estado VARCHAR(20) NOT NULL DEFAULT 'activa'
 );

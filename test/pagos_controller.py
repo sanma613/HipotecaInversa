@@ -7,6 +7,8 @@ from model.Pagos import Pago
 # Importa los modelos/controladores de Hipotecas para crear hipotecas dummy
 from controller.HipotecasController import HipotecasController
 from model.Hipotecas import Hipoteca
+from controller.PropiedadesController import PropiedadesController
+from controller.ClientesController import ClientesController
 
 class TestPagos(unittest.TestCase):
 
@@ -16,6 +18,20 @@ class TestPagos(unittest.TestCase):
         PagosController.crear_tabla()
         HipotecasController.eliminar_tabla()
         HipotecasController.crear_tabla()
+        PropiedadesController.eliminar_tabla()
+        PropiedadesController.crear_tabla()
+        ClientesController.eliminar_tabla()
+        ClientesController.crear_tabla()
+
+    def setUp(self):
+        PagosController.eliminar_tabla()
+        PagosController.crear_tabla()
+        HipotecasController.eliminar_tabla()
+        HipotecasController.crear_tabla()
+        PropiedadesController.eliminar_tabla()
+        PropiedadesController.crear_tabla()
+        ClientesController.eliminar_tabla()
+        ClientesController.crear_tabla()
 
     def crear_hipoteca_dummy(self, id_hipoteca):
         from controller.ClientesController import ClientesController
@@ -23,16 +39,18 @@ class TestPagos(unittest.TestCase):
         from controller.PropiedadesController import PropiedadesController
         from model.propiedades import Propiedad
 
-        cliente = Cliente(1, "Nombre", 30, "direccion", "telefono", "email")
+        cliente_id = id_hipoteca  # Así cada cliente tiene un id único por test
+        propiedad_id = id_hipoteca  # Así cada propiedad también es única
+
+        cliente = Cliente(cliente_id, "Nombre", 30, "direccion", "telefono", "email")
         ClientesController.insertar(cliente)
-        propiedad = Propiedad(1, "Direccion", 100000.0, "Casa", 1, "2024-01-01 00:00:00")
+        propiedad = Propiedad(propiedad_id, "Direccion", 100000.0, "Casa", cliente_id, "2024-01-01 00:00:00")
         PropiedadesController.insertar(propiedad)
 
-        # Ajusta el número y orden de argumentos según tu clase Hipoteca
         hipoteca = Hipoteca(
             id_hipoteca,    # id
-            1,              # cliente_id
-            1,              # propiedad_id
+            cliente_id,     # cliente_id
+            propiedad_id,   # propiedad_id
             12,             # total_cuotas
             0.05,           # tasa_interes_mensual
             1000.0,         # ingreso_mensual
@@ -68,6 +86,10 @@ class TestPagos(unittest.TestCase):
         PagosController.crear_tabla()
         HipotecasController.eliminar_tabla()
         HipotecasController.crear_tabla()
+        PropiedadesController.eliminar_tabla()
+        PropiedadesController.crear_tabla()
+        ClientesController.eliminar_tabla()
+        ClientesController.crear_tabla()
         self.crear_hipoteca_dummy(104)
         pago_original = Pago(None, 104, 4000.0, "2024-04-01 13:00:00")
         PagosController.insertar(pago_original)
@@ -75,6 +97,10 @@ class TestPagos(unittest.TestCase):
         PagosController.crear_tabla()
         HipotecasController.eliminar_tabla()
         HipotecasController.crear_tabla()
+        PropiedadesController.eliminar_tabla()
+        PropiedadesController.crear_tabla()
+        ClientesController.eliminar_tabla()
+        ClientesController.crear_tabla()
         self.crear_hipoteca_dummy(104)
         pago_modificado = Pago(None, 104, 4500.0, "2024-04-01 13:00:00")
         PagosController.insertar(pago_modificado)
@@ -86,6 +112,10 @@ class TestPagos(unittest.TestCase):
         PagosController.crear_tabla()
         HipotecasController.eliminar_tabla()
         HipotecasController.crear_tabla()
+        PropiedadesController.eliminar_tabla()
+        PropiedadesController.crear_tabla()
+        ClientesController.eliminar_tabla()
+        ClientesController.crear_tabla()
         self.crear_hipoteca_dummy(105)
         pago_original = Pago(None, 105, 5000.0, "2024-05-01 14:00:00")
         PagosController.insertar(pago_original)
@@ -93,6 +123,10 @@ class TestPagos(unittest.TestCase):
         PagosController.crear_tabla()
         HipotecasController.eliminar_tabla()
         HipotecasController.crear_tabla()
+        PropiedadesController.eliminar_tabla()
+        PropiedadesController.crear_tabla()
+        ClientesController.eliminar_tabla()
+        ClientesController.crear_tabla()
         self.crear_hipoteca_dummy(105)
         pago_modificado = Pago(None, 105, 5500.0, "2024-05-01 14:00:00")
         PagosController.insertar(pago_modificado)
@@ -104,6 +138,10 @@ class TestPagos(unittest.TestCase):
         PagosController.crear_tabla()
         HipotecasController.eliminar_tabla()
         HipotecasController.crear_tabla()
+        PropiedadesController.eliminar_tabla()
+        PropiedadesController.crear_tabla()
+        ClientesController.eliminar_tabla()
+        ClientesController.crear_tabla()
         self.crear_hipoteca_dummy(106)
         pago_original = Pago(None, 106, 6000.0, "2024-06-01 15:00:00")
         PagosController.insertar(pago_original)
@@ -111,6 +149,10 @@ class TestPagos(unittest.TestCase):
         PagosController.crear_tabla()
         HipotecasController.eliminar_tabla()
         HipotecasController.crear_tabla()
+        PropiedadesController.eliminar_tabla()
+        PropiedadesController.crear_tabla()
+        ClientesController.eliminar_tabla()
+        ClientesController.crear_tabla()
         self.crear_hipoteca_dummy(106)
         pago_modificado = Pago(None, 106, 6500.0, "2024-06-01 15:00:00")
         PagosController.insertar(pago_modificado)

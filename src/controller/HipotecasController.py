@@ -8,6 +8,13 @@ import secret_config
 class HipotecasController:
 
     @staticmethod
+    def sincronizar_secuencia():
+        cursor = HipotecasController.obtener_cursor()
+        cursor.execute("SELECT setval('hipotecas_id_seq', (SELECT MAX(id) FROM hipotecas));")
+        cursor.connection.commit()
+        cursor.close()
+
+    @staticmethod
     def crear_tabla():
         """Crea la tabla de hipotecas en la BD"""
         cursor = HipotecasController.obtener_cursor()
@@ -20,7 +27,8 @@ class HipotecasController:
                 tasa_interes_mensual NUMERIC(5, 2) NOT NULL,
                 ingreso_mensual NUMERIC(15, 2),
                 deuda_total NUMERIC(15, 2),
-                fecha_inicio TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                fecha_inicio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                estado VARCHAR(20) NOT NULL DEFAULT 'activa'
             );
         """)
         cursor.connection.commit()
@@ -48,17 +56,19 @@ class HipotecasController:
         cursor = HipotecasController.obtener_cursor()
         cursor.execute("""
             INSERT INTO hipotecas (
-                cliente_id, propiedad_id, total_cuotas, tasa_interes_mensual,
-                ingreso_mensual, deuda_total, fecha_inicio
-            ) VALUES (%s, %s, %s, %s, %s, %s, %s)
+                id, cliente_id, propiedad_id, total_cuotas, tasa_interes_mensual,
+                ingreso_mensual, deuda_total, fecha_inicio, estado
+            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
         """, (
+            hipoteca.id,
             hipoteca.cliente_id,
             hipoteca.propiedad_id,
             hipoteca.total_cuotas,
             hipoteca.tasa_interes_mensual,
             hipoteca.ingreso_mensual,
             hipoteca.deuda_total,
-            hipoteca.fecha_inicio
+            hipoteca.fecha_inicio,
+            hipoteca.estado
         ))
         cursor.connection.commit()
         cursor.close()
@@ -69,7 +79,7 @@ class HipotecasController:
         cursor = HipotecasController.obtener_cursor()
         cursor.execute("""
             SELECT id, cliente_id, propiedad_id, total_cuotas, tasa_interes_mensual,
-            ingreso_mensual, deuda_total, fecha_inicio
+            ingreso_mensual, deuda_total, fecha_inicio, estado
             FROM hipotecas WHERE id = %s;
         """, (hipoteca_id,))
         fila = cursor.fetchone()

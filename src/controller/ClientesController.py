@@ -29,7 +29,7 @@ class ClientesController:
     def eliminar_tabla():
         """Elimina la tabla de clientes de la BD"""
         cursor = ClientesController.obtener_cursor()
-        cursor.execute("DROP TABLE IF EXISTS clientes;")
+        cursor.execute("DROP TABLE IF EXISTS clientes CASCADE;")
         cursor.connection.commit()
         cursor.close()
 
@@ -46,9 +46,11 @@ class ClientesController:
         """Inserta un cliente en la tabla"""
         cursor = ClientesController.obtener_cursor()
         cursor.execute("""
-            INSERT INTO clientes (nombre, edad, direccion, telefono, email, fecha_registro)
-            VALUES (%s, %s, %s, %s, %s, %s)
+            INSERT INTO clientes (
+                id, nombre, edad, direccion, telefono, email, fecha_registro
+            ) VALUES (%s, %s, %s, %s, %s, %s, %s)
         """, (
+            cliente.id,
             cliente.nombre,
             cliente.edad,
             cliente.direccion,
