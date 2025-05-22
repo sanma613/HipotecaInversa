@@ -3,7 +3,7 @@ sys.path.append("")  # Para importar secret_config desde la raíz
 
 import psycopg2
 from src.model.Pagos import Pago
-import secret_config
+from secret_config import SecretConfig
 
 class PagosController:
 
@@ -71,11 +71,7 @@ class PagosController:
 
     @staticmethod
     def obtener_cursor():
-        """Crea la conexión a la base de datos y retorna un cursor"""
-        connection = psycopg2.connect(
-            database=secret_config.PGDATABASE,
-            user=secret_config.PGUSER,
-            password=secret_config.PGPASSWORD,
-            host=secret_config.PGHOST,
-        )
-        return connection.cursor()
+        config = SecretConfig()
+        db_config = config.get_postgres_config()
+        conn = psycopg2.connect(**db_config)
+        return conn.cursor()
