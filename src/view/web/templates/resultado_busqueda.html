@@ -1,0 +1,132 @@
+{% extends "base.html" %} {% block title %}Resultado de Búsqueda{% endblock %}
+{% block content %}
+<h2>Resultado de la Búsqueda</h2>
+
+{% if error %}
+<div class="error">{{ error }}</div>
+{% elif resultado %} {% if resultado.__class__.__name__ == "Cliente" %}
+<h3>Cliente</h3>
+<table>
+  <tr>
+    <th>ID</th>
+    <td>{{ resultado.id }}</td>
+  </tr>
+  <tr>
+    <th>Nombre</th>
+    <td>{{ resultado.nombre }}</td>
+  </tr>
+  <tr>
+    <th>Edad</th>
+    <td>{{ resultado.edad }}</td>
+  </tr>
+  <tr>
+    <th>Dirección</th>
+    <td>{{ resultado.direccion }}</td>
+  </tr>
+  <tr>
+    <th>Teléfono</th>
+    <td>{{ resultado.telefono }}</td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td>{{ resultado.email }}</td>
+  </tr>
+  <tr>
+    <th>Fecha de Registro</th>
+    <td>{{ resultado.fecha_registro }}</td>
+  </tr>
+</table>
+{% elif resultado.__class__.__name__ == "Propiedad" %}
+<h3>Propiedad</h3>
+<table>
+  <tr>
+    <th>ID</th>
+    <td>{{ resultado.id }}</td>
+  </tr>
+  <tr>
+    <th>Dirección</th>
+    <td>{{ resultado.direccion }}</td>
+  </tr>
+  <tr>
+    <th>Valor</th>
+    <td>{{ resultado.valor }}</td>
+  </tr>
+  <tr>
+    <th>Tipo</th>
+    <td>{{ resultado.tipo }}</td>
+  </tr>
+  <tr>
+    <th>ID Propietario</th>
+    <td>{{ resultado.propietario_id }}</td>
+  </tr>
+  <tr>
+    <th>Fecha de Registro</th>
+    <td>{{ resultado.fecha_registro }}</td>
+  </tr>
+</table>
+{% elif resultado.__class__.__name__ == "Hipoteca" %}
+<h3>Hipoteca</h3>
+<table>
+  <tr>
+    <th>ID</th>
+    <td>{{ resultado.id }}</td>
+  </tr>
+  <tr>
+    <th>ID Cliente</th>
+    <td>{{ resultado.cliente_id }}</td>
+  </tr>
+  <tr>
+    <th>ID Propiedad</th>
+    <td>{{ resultado.propiedad_id }}</td>
+  </tr>
+  <tr>
+    <th>Total Cuotas</th>
+    <td>{{ resultado.total_cuotas }}</td>
+  </tr>
+  <tr>
+    <th>Tasa Interés Mensual</th>
+    <td>{{ resultado.tasa_interes_mensual }}</td>
+  </tr>
+  <tr>
+    <th>Ingreso Mensual</th>
+    <td>{{ resultado.ingreso_mensual }}</td>
+  </tr>
+  <tr>
+    <th>Deuda Total</th>
+    <td>{{ resultado.deuda_total }}</td>
+  </tr>
+  <tr>
+    <th>Fecha de Inicio</th>
+    <td>{{ resultado.fecha_inicio }}</td>
+  </tr>
+  <tr>
+    <th>Estado</th>
+    <td>{{ resultado.estado }}</td>
+  </tr>
+</table>
+{% elif resultado.__class__.__name__ == "Pago" %}
+<h3>Pago</h3>
+<table>
+  <tr>
+    <th>ID</th>
+    <td>{{ resultado.id }}</td>
+  </tr>
+  <tr>
+    <th>ID Hipoteca</th>
+    <td>{{ resultado.hipoteca_id }}</td>
+  </tr>
+  <tr>
+    <th>Monto</th>
+    <td>{{ resultado.monto }}</td>
+  </tr>
+  <tr>
+    <th>Fecha de Pago</th>
+    <td>{{ resultado.fecha_pago }}</td>
+  </tr>
+</table>
+{% else %}
+<div>Tipo de resultado desconocido.</div>
+<pre>{{ resultado }}</pre>
+{% endif %} {% else %}
+<div class="error">No se encontró ningún registro.</div>
+{% endif %} {% endblock %}

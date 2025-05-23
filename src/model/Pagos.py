@@ -4,7 +4,7 @@ class Pago:
 
         if id is not None and (not isinstance(id, int) or id <= 0):
             raise ValueError("El id debe ser un entero positivo o None.")
-        if hipoteca_id is None or hipoteca_id < 0:
+        if hipoteca_id is None or hipoteca_id <= 0:
             raise ValueError("El hipoteca_id debe ser un entero positivo.")
         if monto is None or monto < 0:
             raise ValueError("El monto debe ser un número positivo.")

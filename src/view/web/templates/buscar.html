@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %}Buscar Registro{% endblock %} {%
+block content %}
+<h2>Buscar Registro</h2>
+<form action="/buscar" method="post">
+  <label for="tipo">Tipo de búsqueda:</label>
+  <select id="tipo" name="tipo" required>
+    <option value="">Seleccione...</option>
+    <option value="cliente">Cliente</option>
+    <option value="propiedad">Propiedad</option>
+    <option value="hipoteca">Hipoteca</option>
+    <option value="pago">Pago</option>
+  </select>
+
+  <label for="id">ID:</label>
+  <input type="number" id="id" name="id" min="1" required />
+
+  <button type="submit">Buscar</button>
+</form>
+
+{% if error %}
+<div style="color: red">{{ error }}</div>
+{% endif %} {% endblock %} {% block head %}
+<style>
+  form {
+    max-width: 400px;
+    margin: auto;
+  }
+  label,
+  select,
+  input {
+    display: block;
+    width: 100%;
+    margin-bottom: 1em;
+  }
+  button {
+    width: 100%;
+    padding: 0.5em;
+  }
+</style>
+{% endblock %}

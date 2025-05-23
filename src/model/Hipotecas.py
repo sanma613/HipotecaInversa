@@ -1,13 +1,10 @@
-
-
 class Hipoteca:
     def __init__(self, id, cliente_id, propiedad_id, total_cuotas, tasa_interes_mensual, ingreso_mensual, deuda_total, fecha_inicio, estado):
-
-        if id is None or id < 0:
+        if id is not None and (not isinstance(id, int) or id <= 0):
             raise ValueError("El id debe ser un entero positivo.")
-        if cliente_id is None or cliente_id < 0:
+        if cliente_id is None or cliente_id <= 0:
             raise ValueError("El cliente_id debe ser un entero positivo.")
-        if propiedad_id is None or propiedad_id < 0:
+        if propiedad_id is None or propiedad_id <= 0:
             raise ValueError("El propiedad_id debe ser un entero positivo.")
         if total_cuotas is None or total_cuotas <= 0:
             raise ValueError("El total_cuotas debe ser un entero positivo mayor a cero.")
@@ -35,4 +32,3 @@ class Hipoteca:
             f"tasa_interes_mensual={self.tasa_interes_mensual}, ingreso_mensual={self.ingreso_mensual}, "
             f"deuda_total={self.deuda_total}, fecha_inicio={self.fecha_inicio})"
         )
-    

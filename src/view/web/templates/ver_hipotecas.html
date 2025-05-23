@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block title %}Ver Hipotecas{% endblock %} {% block
+content %}
+<h2>Lista de Hipotecas</h2>
+<table border="1" cellpadding="5">
+  <tr>
+    <th>ID</th>
+    <th>ID Cliente</th>
+    <th>ID Propiedad</th>
+    <th>Total Cuotas</th>
+    <th>Tasa Interés Mensual</th>
+    <th>Ingreso Mensual</th>
+    <th>Deuda Total</th>
+    <th>Fecha Inicio</th>
+    <th>Estado</th>
+  </tr>
+  {% for h in hipotecas %}
+  <tr>
+    <td>{{ h.id }}</td>
+    <td>{{ h.cliente_id }}</td>
+    <td>{{ h.propiedad_id }}</td>
+    <td>{{ h.total_cuotas }}</td>
+    <td>{{ h.tasa_interes_mensual }}</td>
+    <td>{{ h.ingreso_mensual }}</td>
+    <td>{{ h.deuda_total }}</td>
+    <td>{{ h.fecha_inicio }}</td>
+    <td>{{ h.estado }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

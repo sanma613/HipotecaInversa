@@ -41,17 +41,13 @@ class PagosController:
     @staticmethod
     def insertar(pago: Pago):
         cursor = PagosController.obtener_cursor()
-        cursor.execute("""
-            INSERT INTO pagos (
-                hipoteca_id, monto, fecha_pago
-            ) VALUES (%s, %s, %s)
-            RETURNING id
-        """, (
-            pago.hipoteca_id,
-            pago.monto,
-            pago.fecha_pago
-        ))
-        pago.id = cursor.fetchone()[0]
+        cursor.execute(
+            """
+            INSERT INTO pagos (hipoteca_id, monto, fecha_pago)
+            VALUES (%s, %s, %s)
+            """,
+            (pago.hipoteca_id, pago.monto, pago.fecha_pago)
+        )
         cursor.connection.commit()
         cursor.close()
 
@@ -68,6 +64,18 @@ class PagosController:
         if fila:
             return Pago(*fila)
         return None
+
+    @staticmethod
+    def listar_todos():
+        """Devuelve una lista de todos los pagos"""
+        cursor = PagosController.obtener_cursor()
+        cursor.execute("""
+            SELECT id, hipoteca_id, monto, fecha_pago
+            FROM pagos;
+        """)
+        filas = cursor.fetchall()
+        cursor.close()
+        return [Pago(*fila) for fila in filas]
 
     @staticmethod
     def obtener_cursor():

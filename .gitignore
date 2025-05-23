@@ -1,6 +1,8 @@
 __pycache__
-.venv
+.venv/
+kivy_env
 dist
 build
 hipoteca_inversa_gui.spec
 secret_config.py
+vscode

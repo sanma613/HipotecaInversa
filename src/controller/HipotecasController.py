@@ -56,11 +56,10 @@ class HipotecasController:
         cursor = HipotecasController.obtener_cursor()
         cursor.execute("""
             INSERT INTO hipotecas (
-                id, cliente_id, propiedad_id, total_cuotas, tasa_interes_mensual,
+                cliente_id, propiedad_id, total_cuotas, tasa_interes_mensual,
                 ingreso_mensual, deuda_total, fecha_inicio, estado
-            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
         """, (
-            hipoteca.id,
             hipoteca.cliente_id,
             hipoteca.propiedad_id,
             hipoteca.total_cuotas,
@@ -87,6 +86,19 @@ class HipotecasController:
         if fila:
             return Hipoteca(*fila)
         return None
+
+    @staticmethod
+    def listar_todos():
+        """Devuelve una lista de todas las hipotecas"""
+        cursor = HipotecasController.obtener_cursor()
+        cursor.execute("""
+            SELECT id, cliente_id, propiedad_id, total_cuotas, tasa_interes_mensual,
+                   ingreso_mensual, deuda_total, fecha_inicio, estado
+            FROM hipotecas;
+        """)
+        filas = cursor.fetchall()
+        cursor.close()
+        return [Hipoteca(*fila) for fila in filas]
 
     @staticmethod
     def obtener_cursor():

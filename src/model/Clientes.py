@@ -9,7 +9,7 @@ class Cliente:
         email: str = None,
         fecha_registro: str = None
     ):
-        if id is None or id < 0:
+        if id is not None and (not isinstance(id, int) or id <= 0):
             raise ValueError("El id debe ser un entero positivo.")
         if not nombre or not isinstance(nombre, str):
             raise ValueError("El nombre es obligatorio y debe ser una cadena de texto.")

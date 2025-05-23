@@ -47,16 +47,14 @@ class ClientesController:
         cursor = ClientesController.obtener_cursor()
         cursor.execute("""
             INSERT INTO clientes (
-                id, nombre, edad, direccion, telefono, email, fecha_registro
-            ) VALUES (%s, %s, %s, %s, %s, %s, %s)
+                nombre, edad, direccion, telefono, email
+            ) VALUES (%s, %s, %s, %s, %s)
         """, (
-            cliente.id,
             cliente.nombre,
             cliente.edad,
             cliente.direccion,
             cliente.telefono,
-            cliente.email,
-            cliente.fecha_registro
+            cliente.email
         ))
         cursor.connection.commit()
         cursor.close()
@@ -74,6 +72,18 @@ class ClientesController:
         if fila:
             return Cliente(*fila)
         return None
+
+    @staticmethod
+    def listar_todos():
+        """Devuelve una lista de todos los clientes"""
+        cursor = ClientesController.obtener_cursor()
+        cursor.execute("""
+            SELECT id, nombre, edad, direccion, telefono, email, fecha_registro
+            FROM clientes;
+        """)
+        filas = cursor.fetchall()
+        cursor.close()
+        return [Cliente(*fila) for fila in filas]
 
     @staticmethod
     def obtener_cursor():

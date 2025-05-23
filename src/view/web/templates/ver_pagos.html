@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block title %}Ver Pagos{% endblock %} {% block
+content %}
+<h2>Lista de Pagos</h2>
+<table border="1" cellpadding="5">
+  <tr>
+    <th>ID</th>
+    <th>ID Hipoteca</th>
+    <th>Monto</th>
+    <th>Fecha de Pago</th>
+  </tr>
+  {% for p in pagos %}
+  <tr>
+    <td>{{ p.id }}</td>
+    <td>{{ p.hipoteca_id }}</td>
+    <td>{{ p.monto }}</td>
+    <td>{{ p.fecha_pago }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

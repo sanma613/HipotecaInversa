@@ -74,6 +74,18 @@ class PropiedadesController:
         return None
 
     @staticmethod
+    def listar_todos():
+        """Devuelve una lista de todas las propiedades"""
+        cursor = PropiedadesController.obtener_cursor()
+        cursor.execute("""
+            SELECT id, direccion, valor, tipo, propietario_id, fecha_registro
+            FROM propiedades;
+        """)
+        filas = cursor.fetchall()
+        cursor.close()
+        return [Propiedad(*fila) for fila in filas]
+
+    @staticmethod
     def obtener_cursor():
         config = SecretConfig()
         db_config = config.get_postgres_config()

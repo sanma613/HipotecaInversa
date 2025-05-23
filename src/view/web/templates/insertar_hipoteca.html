@@ -1,0 +1,57 @@
+{% extends "base.html" %} {% block title %}Insertar Hipoteca{% endblock %} {%
+block content %}
+<h2>Insertar Hipoteca</h2>
+<form action="/insertar_hipoteca" method="post">
+  <label for="cliente_id">ID Cliente:</label>
+  <input type="number" id="cliente_id" name="cliente_id" min="1" required />
+
+  <label for="propiedad_id">ID Propiedad:</label>
+  <input type="number" id="propiedad_id" name="propiedad_id" min="1" required />
+
+  <label for="total_cuotas">Total Cuotas:</label>
+  <input type="number" id="total_cuotas" name="total_cuotas" min="1" required />
+
+  <label for="tasa_interes_mensual">Tasa Interés Mensual (%):</label>
+  <input
+    type="number"
+    id="tasa_interes_mensual"
+    name="tasa_interes_mensual"
+    min="0"
+    step="0.01"
+    required
+  />
+
+  <label for="ingreso_mensual">Ingreso Mensual:</label>
+  <input
+    type="number"
+    id="ingreso_mensual"
+    name="ingreso_mensual"
+    min="0"
+    step="0.01"
+    required
+  />
+
+  <label for="deuda_total">Deuda Total:</label>
+  <input
+    type="number"
+    id="deuda_total"
+    name="deuda_total"
+    min="0"
+    step="0.01"
+    required
+  />
+
+  <label for="fecha_inicio">Fecha de Inicio:</label>
+  <input type="date" id="fecha_inicio" name="fecha_inicio" required />
+
+  <label for="estado">Estado:</label>
+  <input type="text" id="estado" name="estado" required />
+
+  <button type="submit">Insertar</button>
+</form>
+
+{% if mensaje %}
+<div style="color: green">{{ mensaje }}</div>
+{% endif %} {% if error %}
+<div style="color: red">{{ error }}</div>
+{% endif %} {% endblock %}

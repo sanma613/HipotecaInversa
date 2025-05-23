@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block title %}Ver Propiedades{% endblock %} {%
+block content %}
+<h2>Lista de Propiedades</h2>
+<table border="1" cellpadding="5">
+  <tr>
+    <th>ID</th>
+    <th>Dirección</th>
+    <th>Valor</th>
+    <th>Tipo</th>
+    <th>ID Propietario</th>
+    <th>Fecha Registro</th>
+  </tr>
+  {% for p in propiedades %}
+  <tr>
+    <td>{{ p.id }}</td>
+    <td>{{ p.direccion }}</td>
+    <td>{{ p.valor }}</td>
+    <td>{{ p.tipo }}</td>
+    <td>{{ p.propietario_id }}</td>
+    <td>{{ p.fecha_registro }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
