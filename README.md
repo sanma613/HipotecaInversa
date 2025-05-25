@@ -72,6 +72,7 @@ HipotecaInversa/
 │   └── README.md
 ├── app.py
 ├── requirements.txt
+├── secret_config.py
 ```
 
 ---
@@ -122,15 +123,13 @@ HipotecaInversa/
 3. **Configura el archivo `secret_config.py`** en la raíz del proyecto con tus datos de Neon:
 
    ```python
-   class SecretConfig:
-       def get_postgres_config(self):
-           return {
-               'dbname': 'nombre_de_tu_db',
-               'user': 'tu_usuario',
-               'password': 'tu_contraseña',
-               'host': 'tu_host_de_neon',
-               'port': 5432
-           }
+    POSTGRES_HOST=your-postgres-host.example.com
+    POSTGRES_DB=your_database_name
+    POSTGRES_USER=your_database_user
+    POSTGRES_PASSWORD=your_secure_password
+    POSTGRES_PORT=5432
+    POSTGRES_SSLMODE=require
+
    ```
 
 ### Inicialización de la base de datos
@@ -152,6 +151,8 @@ PagosController.crear_tabla()
 Esto dejará la base de datos lista y vacía.
 
 ### Ejecución de la aplicación web
+
+Puedes ingresar directamente a [https://hipotecainversa.onrender.com](https://hipotecainversa.onrender.com)
 
 1. **Ejecuta la aplicación web** desde la raíz del proyecto:
 
