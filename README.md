@@ -152,7 +152,9 @@ Esto dejará la base de datos lista y vacía.
 
 ### Ejecución de la aplicación web
 
-Puedes ingresar directamente a [https://hipotecainversa.onrender.com](https://hipotecainversa.onrender.com)
+Puedes ingresar directamente a [https://hipotecainversa.onrender.com](https://hipotecainversa.onrender.com).
+
+Tambien puedes ejecutarlo localmente de la siguiente manera:
 
 1. **Ejecuta la aplicación web** desde la raíz del proyecto:
 
