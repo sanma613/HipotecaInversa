@@ -18,7 +18,7 @@
 - [Requisitos previos](#requisitos-previos)
 - [Estructura del proyecto](#estructura-del-proyecto)
 - [Instrucciones para ejecutar la GUI](#instrucciones-para-ejecutar-la-gui)
-- [Apartado web (desarrollado por Santiago Machado)](#apartado-web-desarrollado-por-santiago-machado)
+- [Apartado web](#apartado-web-desarrollado)
   - [Configuración de la base de datos Neon](#configuración-de-la-base-de-datos-neon)
   - [Inicialización de la base de datos](#inicialización-de-la-base-de-datos)
   - [Ejecución de la aplicación web](#ejecución-de-la-aplicación-web)
@@ -114,7 +114,7 @@ HipotecaInversa/
 
 ---
 
-## Apartado web (desarrollado por Santiago Machado)
+## Apartado web
 
 ### Configuración de la base de datos Neon
 
