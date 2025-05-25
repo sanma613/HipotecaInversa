@@ -168,11 +168,3 @@ Esto dejará la base de datos lista y vacía.
 - Gestionar los datos almacenados en la base de datos Neon.
 
 ---
-
-## Notas adicionales
-
-- Si necesitas reiniciar la base de datos, puedes usar los métodos `eliminar_tabla()` y luego `crear_tabla()` de cada controlador.
-- El apartado web fue desarrollado por **Santiago Machado**.
-- Si tienes dudas sobre la configuración o ejecución, revisa los comentarios en el código o contacta a los autores.
-
----
