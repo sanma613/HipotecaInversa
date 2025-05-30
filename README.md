@@ -4,7 +4,8 @@
 
 - Juan José Cano Giraldo
 - Valentina Mesa
-
+- Snatiago Machado
+- Simon Muñoz
 ---
 
 ## Proyecto
@@ -120,9 +121,9 @@ HipotecaInversa/
 
 1. **Crea una cuenta y una base de datos en [Neon](https://neon.tech/).**
 2. **Obtén los datos de conexión** (host, usuario, contraseña, base de datos, puerto).
-3. **Configura el archivo `secret_config.py`** en la raíz del proyecto con tus datos de Neon:
+3. **Configura el archivo `.env`** en la raíz del proyecto con tus datos de Neon:
 
-   ```python
+   ```
     POSTGRES_HOST=your-postgres-host.example.com
     POSTGRES_DB=your_database_name
     POSTGRES_USER=your_database_user
