@@ -4,7 +4,7 @@
 
 - Juan José Cano Giraldo
 - Valentina Mesa
-- Snatiago Machado
+- Santiago Machado
 - Simon Muñoz
 ---
 
