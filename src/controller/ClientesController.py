@@ -84,6 +84,13 @@ class ClientesController:
         filas = cursor.fetchall()
         cursor.close()
         return [Cliente(*fila) for fila in filas]
+    
+    @staticmethod
+    def eliminarbyid(cliente_id: int):
+        cursor= ClientesController.obtener_cursor()
+        cursor.execute("DELETE FROM clientes WHERE id = %s", (cliente_id,))
+        cursor.connection.commit()
+        cursor.close ()
 
     @staticmethod
     def obtener_cursor():
@@ -91,3 +98,5 @@ class ClientesController:
         db_config = config.get_postgres_config()
         conn = psycopg2.connect(**db_config)
         return conn.cursor()
+    
+    

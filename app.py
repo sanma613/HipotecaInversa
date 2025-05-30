@@ -2,11 +2,11 @@ from flask import Flask
 import sys
 sys.path.append("src")
 
-from controller.routes.index import index_blueprint
-from controller.routes.buscar import buscar_blueprint
-from controller.routes.admin import admin_blueprint
-from controller.routes.ver_todos import ver_todos_blueprint
-from controller.routes.insertar_todos import insertar_todos_blueprint
+from view.web.routes.index import index_blueprint
+from view.web.routes.buscar import buscar_blueprint
+from view.web.routes.admin import admin_blueprint
+from view.web.routes.ver_todos import ver_todos_blueprint
+from view.web.routes.insertar_todos import insertar_todos_blueprint
 
 app = Flask(__name__, template_folder='src/view/web/templates', static_folder='src/view/web/static')
 app.secret_key = 'secret_key'
