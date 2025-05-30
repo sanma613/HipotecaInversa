@@ -15,11 +15,11 @@ def eliminar():
 
         if tipo == "cliente":
             clientesController = ClientesController()
-            clientesController.eliminar(id)
+            clientesController.eliminarbyid(id)
             mensaje = "Cliente eliminado exitosamente."
         elif tipo == "propiedad":
             propiedadesController = PropiedadesController()
-            propiedadesController.eliminar(id)
+            propiedadesController.eliminarbyid(id)
             mensaje = "Propiedad eliminada exitosamente."
         else:
             error = "Tipo no válido."
