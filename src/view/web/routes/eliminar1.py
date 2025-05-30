@@ -24,3 +24,25 @@ def eliminar_propiedad():
         propiedadesController.eliminar(id)
         return redirect(url_for("index_blueprint.index"))
     return render_template("eliminar.html")
+
+@eliminar_blueprint.route("/eliminar", methods=["POST", "GET"])
+def eliminar():
+    if request.method == "POST":
+        tipo = request.form["tipo"]
+        id = request.form["id"]
+
+        if tipo == "cliente":
+            clientesController = ClientesController()
+            clientesController.eliminar(id)
+            mensaje = "Cliente eliminado exitosamente."
+        elif tipo == "propiedad":
+            propiedadesController = PropiedadesController()
+            propiedadesController.eliminar(id)
+            mensaje = "Propiedad eliminada exitosamente."
+        else:
+            error = "Tipo no válido."
+            return render_template("eliminar.html", error=error)
+
+        return render_template("eliminar.html", mensaje=mensaje)
+
+    return render_template("eliminar.html")

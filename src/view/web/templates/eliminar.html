@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Eliminar Registro{% endblock %}
+
+{% block content %}
+<h2>Eliminar Registro</h2>
+<form action="/eliminar" method="post">
+  <label for="tipo">Tipo de eliminación:</label>
+  <select id="tipo" name="tipo" required>
+    <option value="">Seleccione...</option>
+    <option value="cliente">Cliente</option>
+    <option value="propiedad">Propiedad</option>
+  </select>
+
+  <label for="id">ID:</label>
+  <input type="number" id="id" name="id" min="1" required />
+
+  <button type="submit">Eliminar</button>
+</form>
+
+{% if mensaje %}
+<div class="alert" style="background: #e6ffe6; color: #27ae60;">{{ mensaje }}</div>
+{% endif %}
+{% if error %}
+<div class="alert">{{ error }}</div>
+{% endif %}
+{% endblock %}
+
+{% block head %}
+<style>
+  form {
+    max-width: 400px;
+    margin: auto;
+  }
+  label,
+  select,
+  input {
+    display: block;
+    width: 100%;
+    margin-bottom: 1em;
+  }
+  button {
+    width: 100%;
+    padding: 0.5em;
+  }
+</style>
+{% endblock %}
