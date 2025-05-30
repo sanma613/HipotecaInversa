@@ -22,8 +22,9 @@ def calcular_hipoteca():
             deuda_total = hipoteca.calcular_deuda_total(ingreso_mensual)
 
             return render_template("calcular_hipoteca.html", 
-                                   ingreso_mensual=ingreso_mensual, 
-                                   deuda_total=deuda_total)
+                                   ingreso_mensual=f"{ingreso_mensual:.0f}",
+                                   deuda_total=f"{deuda_total:.0f}", )
+                                   
         except Exception as e:
             error = f"Error en los datos ingresados: {str(e)}"
             return render_template("calcular_hipoteca.html", error=error)
