@@ -91,3 +91,10 @@ class PropiedadesController:
         db_config = config.get_postgres_config()
         conn = psycopg2.connect(**db_config)
         return conn.cursor()
+    
+    @staticmethod
+    def eliminarbyid(cliente_id: int):
+        cursor= PropiedadesController.obtener_cursor()
+        cursor.execute("DELETE FROM propiedades WHERE id = %s", (cliente_id,))
+        cursor.connection.commit()
+        cursor.close ()
